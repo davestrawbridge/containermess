@@ -11,10 +11,16 @@ namespace ContainerMess {
 
             // this does NOT work due to constraints
 
-            var container = new MyContainer();
+            var locationId = "location";
+
+            var container = new MyContainer { Location = locationId };
             var content = new ContentA();
 
+            container.Add(content);
+
             client.DoSomething<MyContainer, ContentA>(container, content);
+
+            Assert.AreEqual(locationId, content.Location);
         }
     }
 }
